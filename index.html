@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Nudge Calculator</title>
+</head><script src="index.js"></script>
+<body>
+    <div class="container">
+
+  <h1>Date Calculator</h1>
+
+  <label for="datepicker">Select Start Date:</label>
+
+  <input type="date" id="datepicker" onchange="updateDates()">
+
+  <p class="Sdate">Start Date: <span id="currentDate"></span></p>
+
+    <div class="calendar">
+
+        <div class="box" id="day0"></div>
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()" > -->
+        <div class="box" id="day2"></div>
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
+        <div class="box" id="day3"></div>
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
+        <div class="box" id="day4"></div>
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
+        <div class="box" id="end"></div>
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
+    </div>
+    
+    </div>
+</body>
+</html>
