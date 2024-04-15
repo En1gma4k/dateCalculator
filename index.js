@@ -12,7 +12,7 @@ function updateDates() {
 
       futureDate.setDate(currentDate.getDate() + offset);
 
-      return futureDate.toLocaleDateString();
+      return futureDate.toLocaleDateString('en-IN');
 
     }
 
