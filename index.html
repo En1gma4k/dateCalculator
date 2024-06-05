@@ -3,34 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Nudge Calculator</title>
-</head><script src="index.js"></script>
-<body>
-    <div class="container">
-
-  <h1>Date Calculator</h1>
-
-  <label for="datepicker">Select Start Date:</label>
-
-  <input type="date" id="datepicker" onchange="updateDates()">
-
-  <p class="Sdate">Start Date: <span id="currentDate"></span></p>
-
-    <div class="calendar">
-
-        <div class="box" id="day0"></div>
-        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()" > -->
-        <div class="box" id="day2"></div>
-        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
-        <div class="box" id="day3"></div>
-        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
-        <div class="box" id="day4"></div>
-        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
-        <div class="box" id="end"></div>
-        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-icon.png" alt="copy-icon" onclick="copyText()"> -->
-    </div>
-    
+    <title>Date Calculator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-4xl mx-auto p-6 bg-white shadow-md rounded">
+        <h1 class="text-3xl font-bold mb-8 text-center">Date Calculator</h1>
+        <div class="flex flex-col items-center">
+            <label for="startDate" class="mb-4 text-lg">Select Start Date:</label>
+            <input id="startDate" type="date" class="mb-8 p-3 border rounded w-full max-w-sm" />
+            <div id="datesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"></div>
+        </div>
     </div>
 </body>
 </html>
