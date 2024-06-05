@@ -1,36 +1,53 @@
-function updateDates() {
+document.addEventListener('DOMContentLoaded', () => {
+    const startDateInput = document.getElementById('startDate');
+    const datesContainer = document.getElementById('datesContainer');
 
-    const selectedDate = document.getElementById('datepicker').value;
+    startDateInput.addEventListener('change', () => {
+        const selectedDate = new Date(startDateInput.value);
+        if (isNaN(selectedDate)) return;
 
-    document.getElementById('currentDate').innerText = selectedDate;
+        const days = [0, 1, 4, 7, 14, 28];
+        const dates = days.map(day => ({
+            label: `Day ${day}:`,
+            date: formatDate(addDays(selectedDate, day))
+        }));
 
-    function calculateDate(offset) {
+        datesContainer.innerHTML = '';
+        dates.forEach(({ label, date }) => {
+            const dateElement = document.createElement('div');
+            dateElement.className = 'flex items-center p-3 border rounded bg-gray-50';
+            dateElement.innerHTML = `
+                <span class="mr-2">${label}</span>
+                <div class="relative flex-1">
+                    <input type="text" value="${date}" readonly class="w-full p-3 border rounded" />
+                    <button class="copy-btn text-blue-500 hover:text-blue-700 absolute right-3 top-3" data-clipboard-text="${date}">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+            `;
+            datesContainer.appendChild(dateElement);
+        });
 
-      const currentDate = new Date(selectedDate);
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const textToCopy = button.getAttribute('data-clipboard-text');
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    alert('Date copied to clipboard');
+                });
+            });
+        });
+    });
 
-      const futureDate = new Date(currentDate);
-
-      futureDate.setDate(currentDate.getDate() + offset);
-
-      return futureDate.toLocaleDateString('en-IN');
-
+    function addDays(date, days) {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
     }
 
-    document.getElementById('day0').innerText = 'Start: ' + calculateDate(0);
-
-    document.getElementById('day2').innerText = '4 Days: ' + calculateDate(4);
-
-    document.getElementById('day3').innerText = '7 Days: ' + calculateDate(7);
-
-    document.getElementById('day4').innerText = '14 Days: ' + calculateDate(14);
-
-    document.getElementById('end').innerText = '28 Days:' + calculateDate(28);
-
-
-  }
-
-  // Initialize with the current date
-
-  const currentDate = new Date().toLocaleDateString();
-
-  document.getElementById('currentDate').innerText = 'Selected Date: ' + currentDate;
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    }
+});
